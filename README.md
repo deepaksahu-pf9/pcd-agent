@@ -15,9 +15,13 @@ PCD Cluster Assistant is a smart AI-powered CLI assistant that helps diagnose Ku
 ### 1. Clone and Setup Virtual Environment
 
 git clone git@github.com:deepaksahu-pf9/pcd-agent.git
+
 cd pcd-agent
+
 python3 -m venv venv
+
 source venv/bin/activate
+
 pip install -r requirements.txt
 
 ### 2. Configure .env (optional)
