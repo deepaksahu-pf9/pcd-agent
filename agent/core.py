@@ -31,8 +31,10 @@ def extract_commands(text):
             commands.append(cmd)
         elif cmd.startswith("airctl"):
             sub = cmd[len("airctl"):].strip()
-            if sub != "status":
+            #if sub != "status":
+            if "status" not in sub and "airctl" not in sub:
                 continue  # Skip unsupported airctl subcommands
+            sub = "status"
             full = f"/opt/pf9/airctl/airctl --config /opt/pf9/airctl/conf/airctl-config.yaml {sub}"
             commands.append(full)
         else:
@@ -46,11 +48,7 @@ def run_command(cmd):
         return f"❌ Command failed:\n{e.output.strip()}"
 
 def get_ssh_ip():
-    try:
-        with open("/tmp/ssh_ip.txt") as f:
-            return f.read().strip()
-    except Exception:
-        return os.getenv("SSH_IP")
+    return os.getenv("SSH_IP")
 
 def get_ssh_key_path():
     path = "/tmp/ssh_key.pem"
@@ -59,6 +57,7 @@ def get_ssh_key_path():
     return os.getenv("SSH_KEY_PATH")
 
 def run_remote_airctl(cmd):
+    log.info(f"🔗 Running remote airctl command: {cmd}")
     ip = get_ssh_ip()
     key = get_ssh_key_path()
 
@@ -71,6 +70,7 @@ def run_remote_airctl(cmd):
         try:
             os.chmod(key, 0o600)
         except Exception:
+            log.error(f"❌ Failed to set permissions on SSH key {key}. Ensure it is readable by the agent.")
             pass
 
     ssh_cmd = f'ssh -i "{key}" -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ubuntu@{ip} "{cmd}"'
@@ -178,7 +178,9 @@ def process_query(user_input):
         else "You are a Kubernetes expert. Return only kubectl commands."
     )
 
+    log.info(f"🤖 Processing query: {user_input}")
     cmd_response = ask_openai(user_input, system_role)
+    log.info(f"Received command response: {cmd_response}")
     cmds = extract_commands(cmd_response)
 
     results = []
