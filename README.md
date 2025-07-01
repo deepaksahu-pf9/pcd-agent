@@ -25,8 +25,11 @@ pip install -r requirements.txt
 Edit `config/config.env` to set static fallback config:
 
 OPENAI_API_KEY=sk-xxxxx
+
 KUBECONFIG=/absolute/path/to/kubeconfig.yaml
+
 SSH_IP=remote-ip
+
 SSH_KEY_PATH=/absolute/path/to/ssh_key.pem
 
 Note: You can also upload these directly via the UI per session — no need to hardcode.
