@@ -22,11 +22,11 @@ pip install -r requirements.txt
 
 ### 2. Configure .env (optional)
 
-Edit config/config.env to set static fallback config:
+Edit `config/config.env` to set static fallback config:
 
 OPENAI_API_KEY=sk-xxxxx
 KUBECONFIG=/absolute/path/to/kubeconfig.yaml
-SSH_IP=<remote-ip>
+SSH_IP=remote-ip
 SSH_KEY_PATH=/absolute/path/to/ssh_key.pem
 
 Note: You can also upload these directly via the UI per session — no need to hardcode.
@@ -41,7 +41,7 @@ python -m agent.core
 
 python web.py
 
-Then open your browser at: http://localhost:5000 or http://<host-ip>:5000
+Then open your browser at: http://localhost:5000 or http://host-ip:5000
 
 From here, you can:
 - Enter natural language queries like “Why is pod X pending?”
