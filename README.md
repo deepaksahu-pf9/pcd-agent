@@ -10,24 +10,6 @@ PCD Cluster Assistant is a smart AI-powered CLI assistant that helps diagnose Ku
 - Smart summaries of command output
 - Simple Flask-based Web UI
 
-## Directory Structure
-
-pcd-agent/
-├── agent/                  # Core AI logic and command runner
-│   └── core.py
-├── config/                 # Static configs (optional fallback)
-│   ├── config.env
-│   └── kubeconfig.yaml
-├── credentials/            # SSH key and kubeconfig (optional fallback)
-│   ├── ssh_key.pem
-│   └── user_kubeconfig.yaml
-├── static/                 # Web UI assets (JS/CSS/images)
-├── templates/              # Web UI templates
-├── web.py                  # Flask web server
-├── requirements.txt        # Python dependencies
-└── README.md
-
-
 ## Setup
 
 ### 1. Clone and Setup Virtual Environment
