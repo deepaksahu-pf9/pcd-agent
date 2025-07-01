@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PCD Cluster Assistant</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="sidebar">
+
+    <div class="sidebar-logo">
+      <img src="/static/platform9.png" alt="Platform9 Logo" />
+    </div>
+
+    <div class="sidebar-header">
+      <i class="fas fa-microchip"></i> <span>Agent Settings</span>
+    </div>
+
+    <div class="section-title"><i class="fas fa-cube"></i> Kubernetes</div>
+    <button id="set-kubeconfig-btn" class="kubeconfig-button">
+      <i class="fas fa-file-alt"></i> Set Kubeconfig
+    </button>
+
+    <div id="kubeconfig-modal" class="modal">
+      <div class="modal-content">
+        <h2><i class="fas fa-code"></i> Paste your kubeconfig</h2>
+        <textarea id="kubeconfig-input" rows="15" placeholder="Paste kubeconfig here..."></textarea>
+        <div class="modal-actions">
+          <button id="save-kubeconfig-btn">Save</button>
+          <button id="cancel-kubeconfig-btn" class="cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title"><i class="fas fa-lock"></i> SSH Access</div>
+    <button id="set-sshkey-btn" class="kubeconfig-button">
+      <i class="fas fa-key"></i> Set SSH Key
+    </button>
+
+    <div id="sshkey-modal" class="modal">
+      <div class="modal-content">
+        <h2><i class="fas fa-key"></i> Paste your SSH key</h2>
+        <textarea id="sshkey-input" rows="8" placeholder="Paste SSH private key..."></textarea>
+        <div class="modal-actions">
+          <button id="save-sshkey-btn">Save</button>
+          <button id="cancel-sshkey-btn" class="cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <form id="ssh-ip-form" class="form-card">
+      <label for="ssh-ip"><i class="fas fa-network-wired"></i> Airctl Node IP:</label>
+      <input type="text" id="ssh-ip" placeholder="10.10.10.10" />
+      <button type="submit"><i class="fas fa-save"></i> Save IP</button>
+    </form>
+
+    <div class="section-title"><i class="fas fa-brain"></i> AI Settings</div>
+    <button id="set-openai-btn" class="kubeconfig-button">
+      <i class="fas fa-robot"></i> Set OpenAI API Key
+    </button>
+
+    <div id="openai-modal" class="modal">
+      <div class="modal-content">
+        <h2><i class="fas fa-robot"></i> Enter your OpenAI API Key</h2>
+        <textarea id="openai-input" rows="3" placeholder="sk-..."></textarea>
+        <div class="modal-actions">
+          <button id="save-openai-btn">Save</button>
+          <button id="cancel-openai-btn" class="cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <p class="hint-message">
+      For <strong>airctl</strong> queries, include the word <code>airctl</code> in your message.
+    </p>
+  </div>
+
+  <div class="container">
+    <h1><i class="fab fa-kubernetes"></i> PCD Cluster Assistant</h1>
+
+    <div id="chat-window" class="chat-window"></div>
+
+    <div class="chat-loader" id="chat-loader">
+      <i class="fas fa-circle-notch fa-spin"></i> Thinking...
+    </div>
+
+    <form id="chat-form">
+      <input type="text" id="user-input" placeholder="Type your cluster query ..." autocomplete="off" required />
+      <button type="submit"><i class="fas fa-paper-plane"></i> Send</button>
+    </form>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

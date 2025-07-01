@@ -1,0 +1,21 @@
+# Bytecode
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+
+# Secrets / keys
+credentials/
+*.pem
+
+# Local configs not meant for Git
+config.env
+user_kubeconfig.yaml
+kubeconfig.yaml
+
+# Backup files
+*~ 
+*.bak
+*.backup
+
