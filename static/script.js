@@ -3,6 +3,12 @@ document.getElementById("chat-form").addEventListener("submit", async function (
   e.preventDefault();
   const input = document.getElementById("user-input");
   const query = input.value.trim();
+  const selectedModel = document.getElementById("gpt-model").value;
+  const maxTokens = document.getElementById("max-tokens").value;
+
+  console.log("🧠 Selected GPT Model:", selectedModel);
+  console.log("🔢 Max Tokens:", maxTokens);
+
   if (!query) return;
 
   appendMessage("user", query);
@@ -37,6 +43,13 @@ function appendMessage(role, text) {
   container.appendChild(messageBlock);
   container.scrollTop = container.scrollHeight;
 }
+
+// Save GPT Model + Max Tokens (UI only)
+document.getElementById("gpt-save-btn")?.addEventListener("click", () => {
+  const model = document.getElementById("gpt-model").value;
+  const tokens = document.getElementById("max-tokens").value;
+  alert(`✅ GPT settings updated:\nModel: ${model}\nMax Tokens: ${tokens}`);
+});
 
 // Kubeconfig modal logic
 const kubeModal = document.getElementById("kubeconfig-modal");

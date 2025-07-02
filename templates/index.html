@@ -51,12 +51,6 @@
       </div>
     </div>
 
-    <form id="ssh-ip-form" class="form-card">
-      <label for="ssh-ip"><i class="fas fa-network-wired"></i> Airctl Node IP:</label>
-      <input type="text" id="ssh-ip" placeholder="10.10.10.10" />
-      <button type="submit"><i class="fas fa-save"></i> Save IP</button>
-    </form>
-
     <div class="section-title"><i class="fas fa-brain"></i> AI Settings</div>
     <button id="set-openai-btn" class="kubeconfig-button">
       <i class="fas fa-robot"></i> Set OpenAI API Key
@@ -72,6 +66,28 @@
         </div>
       </div>
     </div>
+
+    <div class="form-card">
+      <label for="gpt-model"><i class="fas fa-cogs"></i> GPT Model:</label>
+      <select id="gpt-model">
+        <option value="gpt-4">gpt-4</option>
+        <option value="gpt-4o">gpt-4o</option>
+        <option value="gpt-3.5-turbo">gpt-3.5-turbo</option>
+      </select>
+    
+      <label for="max-tokens"><i class="fas fa-sliders-h"></i> Max Tokens:</label>
+      <input type="number" id="max-tokens" min="500" max="8192" step="100" value="3000" />
+
+      <!-- ✅ Save GPT Settings Button -->
+      <button id="gpt-save-btn"><i class="fas fa-check-circle"></i> Save GPT Settings</button>
+    </div>
+
+    <form id="ssh-ip-form" class="form-card">
+      <label for="ssh-ip"><i class="fas fa-network-wired"></i> Airctl Node IP:</label>
+      <input type="text" id="ssh-ip" placeholder="10.10.10.10" />
+      <button type="submit"><i class="fas fa-save"></i> Save IP</button>
+    </form>
+
     <p class="hint-message">
       For <strong>airctl</strong> queries, include the word <code>airctl</code> in your message.
     </p>

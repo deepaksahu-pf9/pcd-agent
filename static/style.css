@@ -12,10 +12,12 @@ body {
 
 .sidebar {
   width: 280px;
-  background-color: #ffffff;
-  border-radius: 12px;
+  background-color: #f7faff; /* subtle light-blue tint */
+  border-right: 2px solid #d0e7ff; /* soft edge separation */
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
   padding: 1.5rem;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.06); /* softer side shadow */
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -294,4 +296,24 @@ h1 {
   font-family: "Courier New", Courier, monospace;
   font-size: 0.9em;
   color: #1a3c77;
+}
+
+.sidebar select,
+.sidebar input[type="number"] {
+  padding: 0.6rem;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  border: 1px solid #bbb;
+  font-family: inherit;
+  width: 100%;
+  box-sizing: border-box; /* ✅ Add this line */
+  margin-bottom: 0.5rem;
+}
+
+
+.sidebar select:focus,
+.sidebar input[type="number"]:focus {
+  outline: none;
+  border-color: #5a9dfb;
+  box-shadow: 0 0 0 3px rgba(90, 157, 251, 0.15);
 }
