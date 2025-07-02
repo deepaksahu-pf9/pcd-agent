@@ -158,6 +158,8 @@ Only output valid kubectl commands.
         out = run_command(cmd)
         results.append(f"$ {cmd}\n{out}")
         try:
+            if len(out) > 8000:
+                out = out[:8000] + "\n...[output truncated]"
             summaries.append(summarize_output(cmd, out, user_input))
         except Exception as e:
             summaries.append(f"⚠️ Could not summarize {cmd}:\n{e}")
@@ -194,6 +196,8 @@ def process_query(user_input):
             out = run_command(cmd)
         results.append(f"$ {cmd}\n{out}")
         if not out.startswith("❌"):
+            if len(out) > 8000:
+                out = out[:8000] + "\n...[output truncated]"
             summaries.append(summarize_output(cmd, out, user_input))
 
     final_output = "\n\n".join(results)
